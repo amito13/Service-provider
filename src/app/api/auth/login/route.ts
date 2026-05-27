@@ -66,15 +66,16 @@ export async function POST(request: Request) {
 
     // generate jwt token
     const token = jwt.sign(
-      {
-        userId: user[0].user_id,
-        email: user[0].user_email,
-      },
-      process.env.JWT_SECRET!,
-      {
-        expiresIn: "7d",
-      }
-    );
+  {
+    user_id: user[0].user_id,
+    email: user[0].user_email,
+    account_type: user[0].account_type,
+  },
+  process.env.JWT_SECRET!,
+  {
+    expiresIn: "7d",
+  }
+  );
 
     // response
     const response = NextResponse.json(
