@@ -23,6 +23,11 @@ export const appointmentStatusEnum = pgEnum("appointment_status", [
   "COMPLETED",
   "CANCELLED",
 ]);
+export const accountTypeEnum = pgEnum("account_type", [
+  "USER",
+  "PROFESSIONAL",
+  "ADMIN"
+]);
 
 export const weekDayEnum = pgEnum("week_day", [
   "MONDAY",
@@ -54,6 +59,10 @@ export const users = pgTable("users", {
     .notNull(),
 
   hashed_password: text("hashed_password").notNull(),
+
+  account_type: accountTypeEnum("account_type")
+    .default("USER")
+    .notNull(),
 
   profile_image: text("profile_image"),
 
