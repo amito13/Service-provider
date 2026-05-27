@@ -88,29 +88,12 @@ export const users = pgTable("users", {
 export const professionals = pgTable("professionals", {
   prf_id: serial("prf_id").primaryKey(),
 
-  prf_name: varchar("prf_name", { length: 255 }).notNull(),
-
-  prf_email: varchar("prf_email", { length: 255 })
-    .unique()
-    .notNull(),
-
-  prf_number: varchar("prf_number", { length: 20 })
-    .unique()
-    .notNull(),
-
-  hashed_password: text("hashed_password").notNull(),
-
-  profile_image: text("profile_image"),
+  user_id: integer("user_id")
+    .references(() => users.user_id)
+    .notNull()
+    .unique(),
 
   description: text("description").notNull(),
-
-  city: varchar("city", { length: 100 }).notNull(),
-
-  state: varchar("state", { length: 100 }).notNull(),
-
-  pincode: varchar("pincode", { length: 20 }).notNull(),
-
-  address: text("address").notNull(),
 
   service_charge: real("service_charge").notNull(),
 
@@ -124,9 +107,13 @@ export const professionals = pgTable("professionals", {
     .default(true)
     .notNull(),
 
-  createdAt: timestamp("created_at").defaultNow().notNull(),
+  createdAt: timestamp("created_at")
+    .defaultNow()
+    .notNull(),
 
-  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at")
+    .defaultNow()
+    .notNull(),
 });
 
 

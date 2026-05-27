@@ -15,6 +15,13 @@
       "when": 1779870960033,
       "tag": "0001_calm_malice",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1779871723366,
+      "tag": "0002_fluffy_odin",
+      "breakpoints": true
     }
   ]
 }
